@@ -1,9 +1,8 @@
 import { FC, useEffect } from "react";
                 import ContactData from "../../common/types/ContactData.tsx";
                 import { UserData } from "../../common/types/UserData.tsx";
-                import Sections from "../../common/Sections/Sections.tsx";
                 import { useSpring, animated } from "react-spring";
-                import Form from "./Form.tsx";
+                
                                 
                 const Contact: FC<{
                   pageData: ContactData;
@@ -80,7 +79,6 @@ import { FC, useEffect } from "react";
                                 </div>
                               </div>
                             </animated.div>
-                            <Form userData={userData} />
                           </div>
                         </div>
                       </main>
