@@ -1,51 +1,44 @@
-name: Deploy
+name: Frontend PR Build
 
 on:
-  push:
+  pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
-    name: Build
+    name: PR Build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-
-      - name: Setup Node
-        uses: actions/setup-node@v1
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          node-version: 16
+          fetch-depth: 0
 
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+      # Use Node 18.x
+      - name: Use Node 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache-dependency-path: package-lock.json
+          cache: "npm"
 
-      - name: Build project
+      # Install Packages
+      - name: Install Packages
+        run: npm install
+
+      # Run Lint
+      - name: Run Lint
+        run: npm run lint
+
+      # Build App
+      - name: Build App
         run: npm run build
 
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v2
+      # Upload Artifact
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: production-files
-          path: ./dist
-
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: production-files
-          path: ./dist
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          name: artifact-frontend
+          path: dist
