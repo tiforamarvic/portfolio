@@ -11,7 +11,7 @@ import { FC, useMemo, useEffect } from "react";
             import Projects from "./pages/Projects/Projects.tsx";
             import NotFound from "./NotFound.tsx";
             import Project from "./pages/Project/Project.tsx";
-            
+
             const App: FC = () => {
             
             useEffect(() => {

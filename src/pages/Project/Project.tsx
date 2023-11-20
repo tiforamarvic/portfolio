@@ -8,11 +8,10 @@ import {FC, useEffect} from "react";
                   userData: UserData;
                 }> = ({ userData }) => {
                   const { slug } = useParams<{ slug: string }>();
-                                
                   const navigate = useNavigate();
                                 
-                  const projectDetails = userData.slugs.find((s) => s.slug === slug);
-                  const projectData = userData.projects.find((p) => p.slug === slug);
+                  const projectDetails = (userData.slug ?? []).find((s) => s.slug === slug);
+                  const projectData = (userData.projects ?? []).find((p) => p.slug === slug);
                                 
                   useEffect(() => {
                     window.scrollTo(0, 0);

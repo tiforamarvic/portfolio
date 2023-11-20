@@ -5,7 +5,7 @@ interface Project {
               updatedAt: string;
               image: string;
               id: string;
-              slug: string;
+              slug?: string;
             }
 
             interface Work {
@@ -17,10 +17,11 @@ interface Project {
               description: string;
               orderId: number;
               image: string;
+              slug?: string;
             }
 
             interface Slug {
-              slug: string;
+              slug?: string;
               header: string;
               description: string;
               about: string;
@@ -43,7 +44,7 @@ interface Project {
               role: string;
               profession: string;
               services: string[];
-              slugs: Slug[];
+              slug?: Slug[];
             }
 
             export type { UserData };

@@ -53,7 +53,7 @@ import { FC } from "react";
                                     image={image}
                                     key={id}
                                     languages={languages}
-                                    slug={slug}
+                                    slug={slug!}
                                   />
                                 );
                               }
