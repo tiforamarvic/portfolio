@@ -16,7 +16,7 @@
               <p className=" text-lg font-semibold text-white transition-all">
                 {details.descriptionOne}
               </p>
-              <div className="my-5">
+              {/* <div className="my-5">
                 <div className=" flex items-start justify-between gap-4">
                   <div className="mt-1 h-4 w-4 rounded border-2 bg-indigo-600"></div>
                   <p className="event-descripition flex-1 pt-0 text-lg font-semibold text-white transition-all">
@@ -35,7 +35,7 @@
                     {details.bulletThree}
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="flex items-center justify-center">
               <div className={` relative mb-5 h-[400px] w-[400px] transition-all`}>

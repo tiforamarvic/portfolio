@@ -1,66 +1,74 @@
+import {FC} from "react";
+import { Link } from "react-router-dom";
+import { useSpring, animated } from "react-spring";
 
-    import {FC} from "react";
-    const JobCard: FC<{
-      companyTitle: string;
-      role: string;
-      description: string;
-      startDate: string;
-      endDate: string;
-      active?: boolean;
-      image: string;
-    }> = ({
-      companyTitle,
-      role,
-      description,
-      startDate,
-      endDate,
-      active,
-      image,
-    }) => {
-                    
-      return (
-        <div
-          className={`relative transition-all hover:-translate-y-0.5 ${active
-            ? "card mb-8 rounded-lg border-2 border-black shadow-custom"
-            : "card mb-8 rounded-lg border-2 border-black"
-          }`}
-        >
-          <div className="flex justify-between">
-            <div>
-              <h2 className="px-5 pt-5 text-3xl font-bold transition-all">
-                {companyTitle}
-              </h2>
-              <div className=" p-5">
-                <h2 className="font-bold transition-all">{role}</h2>
-                <p className="transition-all">{description}</p>
-              </div>
-            </div>
-            <div
-              className={
-                "relative mr-5 mt-5 h-[100px] w-[100px] rounded-full border-2 border-black"
-              }
-            >
-              <img
-                className={"h-full w-full rounded-full object-cover"}
-                src={image}
-                alt={"job photo"}
-              />
-            </div>
-          </div>
-                    
-          <div
-            className={`flew-row flex ${active
-              ? "duration active rounded-b-lg border-t-2 border-black bg-yellow-500 p-5 font-bold"
-              : "duration rounded-b-lg border-t-2 border-black p-5 font-bold"
-            }`}
+const JobCard: FC<{
+companyTitle: string;
+role: string;
+description: string;
+startDate: string;
+endDate: string;
+active?: boolean;
+image: string;
+
+
+}> = ({
+companyTitle,
+role,
+description,
+startDate,
+endDate,
+active,
+image,
+
+
+}) => {
+
+const imageAnimation = useSpring({
+  from: { opacity: 0, transform: "translate3d(0, 20px, 0)" },
+  to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
+  delay: 300,
+});
+              
+return (
+  <>
+  <main>
+    <>
+      <div className="mx-auto my-20 px-5">
+        <section className="flex justify-center flex-col">
+          <animated.div
+            className="flex flex-col justify-center"
           >
-            <p className={"transition-all"}>{startDate}</p>
-            &nbsp;-&nbsp;
-            <p className={"transition-all"}>{endDate}</p>
-          </div>
-        </div>
-      );
-    };
-                    
-    export default JobCard;
+            <div className={'flex justify-center mb-10'}>
+              <animated.div
+                style={imageAnimation}
+                  className="image-wrapper order-2 h-[200px] w-[200px] text-center"
+              >
+                <div className="h-full w-full center overflow-hidden rounded-full border-2 border-black">
+                  <img
+                      className="h-full w-full object-cover"
+                      src={image}
+                      alt="portfolio"
+                  />
+                </div>
+              </animated.div>
+            </div>
+            <div className="flex justify-center text-center">
+              <Link
+                to={description} target="_blank"
+                className="mb-12 inline-block rounded-xl border-2 border-transparent bg-yellow-400 px-10 py-5 font-bold text-black transition-all hover:-translate-y-1 hover:bg-blue-1000"
+              >
+                Click Here To Download Resume.
+              </Link>
+            </div>
+          </animated.div>
+        </section>
+      </div>
+    </>
+  </main>
+  </>
+);
+};
+              
+export default JobCard;
   

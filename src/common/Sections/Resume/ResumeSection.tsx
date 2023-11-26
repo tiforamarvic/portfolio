@@ -16,7 +16,7 @@
             </h2>
             <div>
               {userData.work
-                .sort((a, b) => a.orderId - b.orderId)
+                .sort((a, b) => b.orderId - a.orderId)
                 .map((job, index) => (
                   <JobCard
                     key={job.id}
