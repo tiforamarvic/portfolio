@@ -34,7 +34,7 @@ jobs:
 
       # Build App
       - name: Build App
-        run: npm run build
+        run: npm run dev
 
       # Upload Artifact
       - name: Upload Artifact
