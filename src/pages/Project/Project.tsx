@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserData } from "../../common/types/UserData.tsx";
 import { useSpring, animated } from "react-spring";
@@ -15,13 +15,13 @@ const Project: FC<{
   }, []);
 
   useEffect(() => {
-    if (!slug || !userData.slug?.some((s) => s.slug === slug)) {
+    if (!slug || !userData.slugs?.some((s) => s.slugs === slug)) {
       navigate("/404");
     }
-  }, [slug, userData.slug, navigate]);
+  }, [slug, userData.slugs, navigate]);
   console.log(userData)
   
-  const projectDetails = (userData.slug ?? []).find((s) => s.slug === slug);
+  const projectDetails = (userData.slugs ?? []).find((s) => s.slugs === slug);
   const projectData = (userData.projects ?? []).find((p) => p.slug === slug);
 
 

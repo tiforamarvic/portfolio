@@ -17,11 +17,11 @@ interface Project {
               description: string;
               orderId: number;
               image: string;
-              slug?: string;
+              slugs?: string;
             }
 
             interface Slug {
-              slug?: string;
+              slugs?: string;
               header: string;
               description: string;
               about: string;
@@ -44,7 +44,7 @@ interface Project {
               role: string;
               profession: string;
               services: string[];
-              slug?: Slug[];
+              slugs?: Slug[];
             }
 
             export type { UserData };

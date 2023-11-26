@@ -3,7 +3,6 @@ import { UserData } from "../../common/types/UserData.tsx";
 import { AboutData } from "../../common/types/AboutData.tsx";
 import { useSpring, animated } from "react-spring";
 import { Link } from "react-router-dom";
-import Marquee from "../../common/Marquee/Marquee.tsx";
 import Sections from "../../common/Sections/Sections.tsx";
                                 
 const About: FC<{
@@ -22,11 +21,6 @@ const About: FC<{
     delay: 300,
   });
                 
-  const descriptionAnimation = useSpring({
-    from: { opacity: 0, transform: "translate3d(20px, 0, 0)" },
-    to: { opacity: 1, transform: "translate3d(0, 0, 0)" },
-    delay: 100,
-  });
                 
                 
   return (

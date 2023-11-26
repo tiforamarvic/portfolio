@@ -13,15 +13,8 @@ image: string;
 
 
 }> = ({
-companyTitle,
-role,
 description,
-startDate,
-endDate,
-active,
 image,
-
-
 }) => {
 
 const imageAnimation = useSpring({
