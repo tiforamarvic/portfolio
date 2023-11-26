@@ -8,9 +8,8 @@ const ProjectCard: FC<{
   description: string;
   image: string;
   languages: string[];
-  link: string;
   slug: string;
-}> = ({ title, description, image, languages, slug, link }) => {
+}> = ({ title, description, image, languages, slug }) => {
   const [hovered, setHovered] = useState(false);
                     
   return (
